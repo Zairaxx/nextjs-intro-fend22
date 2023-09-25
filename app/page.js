@@ -1,7 +1,10 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("http://localhost:3001/api/posts");
+  const posts = await res.json();
+  console.log(posts);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -15,7 +18,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -91,5 +94,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
